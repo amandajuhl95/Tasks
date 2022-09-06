@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         CountWordsInFile countWordInFile = new CountWordsInFile();
-        Map<String, Integer> top10 = countWordInFile.getTop10("src/data/itsMyLife.txt");
+        Map<String, Integer> top10 = countWordInFile.getTop10("src/data/shakespeare.txt");
 
         System.out.println(top10);
 
