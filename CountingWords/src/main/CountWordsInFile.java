@@ -38,7 +38,6 @@ public class CountWordsInFile {
         Map<String, Integer> map = new HashMap<>();
         StringBuilder builder = new StringBuilder();
 
-        // Read from file
         BufferedReader reader = new BufferedReader(new FileReader(file));
         String line = reader.readLine();
 
@@ -57,6 +56,7 @@ public class CountWordsInFile {
                     map.put(word, occurrences);
                 }
             }
+
             builder.append(System.lineSeparator());
             line = reader.readLine();
 
