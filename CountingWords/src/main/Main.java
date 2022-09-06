@@ -10,10 +10,6 @@ public class Main {
     public static void main(String[] args) {
 
         CountWordsInFile countWordInFile = new CountWordsInFile();
-<<<<<<< Updated upstream
-        Map<String, Integer> top10 = countWordInFile.getTop10("src/data/shakespeare.txt");
-=======
->>>>>>> Stashed changes
 
         try {
             Map<String, Integer> top10 = countWordInFile.getTop10(FILENAME);
