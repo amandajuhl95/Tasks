@@ -40,5 +40,3 @@ FROM CheckIns
 GROUP BY personId
 HAVING count(*) = 100;
 ```
-NB! I have created a limited amount of data to prove that the SQL queries works, which means that 'HAVING count(*) = 100' needs to be set to lower number e.g. 4 if you decide to try it with my data.
-
