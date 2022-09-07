@@ -13,6 +13,7 @@ sum(case when CheckIns.Club != Persons.Homeclub then 1 else 0 end) as checkins_f
 FROM CheckIns
 LEFT JOIN Persons 
 ON CheckIns.PersonId = Persons.PersonId
+WHERE CheckIns.CheckInTime > CURRENT_DATE - INTERVAL '6 months'
 GROUP BY CheckIns.Club;
 ```
 
