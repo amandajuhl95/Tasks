@@ -1,17 +1,28 @@
-package main;
+package services;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class CountWordsInFile {
 
-    public Map<String, Integer> getTop10(String file) throws IOException {
+    BufferedReader reader;
+    String filename;
+
+    public CountWordsInFile(String filename) throws FileNotFoundException {
+
+        this.filename = filename;
+        this.reader = new BufferedReader(new FileReader(this.filename));
+
+    }
+
+    public Map<String, Integer> getTop10(Map<String, Integer> map) {
 
         Map<String, Integer> top10 = new LinkedHashMap<>();
-
-        Map<String, Integer> map = countWords(file);
         Map<String, Integer> sortedMap = sortWordsByOccurrence(map);
 
         List<String> keys = sortedMap.entrySet().stream()
@@ -33,12 +44,11 @@ public class CountWordsInFile {
 
     }
 
-    private Map<String, Integer> countWords(String file) throws IOException {
+    public Map<String, Integer> countWords() throws IOException {
 
         Map<String, Integer> map = new HashMap<>();
         StringBuilder builder = new StringBuilder();
 
-        BufferedReader reader = new BufferedReader(new FileReader(file));
         String line = reader.readLine();
 
         while (line != null) {
@@ -67,7 +77,7 @@ public class CountWordsInFile {
 
     private Map<String, Integer> sortWordsByOccurrence(Map<String, Integer> map) {
 
-        // Create list with elements from HashMap, as it is not possible to sort a HashMap directly
+        // Create LinkedList with elements from HashMap, as it is not possible to sort a HashMap directly
         List<Entry<String, Integer>> list = new LinkedList<>(map.entrySet());
 
         // Comparing two values and sorting the list in descending order
@@ -78,7 +88,7 @@ public class CountWordsInFile {
         }
         });
 
-        // Elements in LinkedHashMap are ordered
+        // Put elements in a LinkedHashMap as they are sorted, compared to Hashmaps
         Map<String, Integer> sortedMap = new LinkedHashMap<>();
         for (Entry<String, Integer> entry : list)
         {
