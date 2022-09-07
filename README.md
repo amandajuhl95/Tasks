@@ -6,13 +6,17 @@
 
 #### First problem: 
 
-
-
-
-
+```sql
+SELECT CheckIns.Club,
+sum(case when CheckIns.Club = Persons.HomeClub then 1 else 0 end ) as checkins_from_members_registered_in_this_club,
+sum(case when CheckIns.Club != Persons.Homeclub then 1 else 0 end) as checkins_from_members_registered_in_other_clubs
+FROM CheckIns
+LEFT JOIN Persons 
+ON CheckIns.PersonId = Persons.PersonId
+GROUP BY CheckIns.Club;
+```
 
 #### Second problem:
-
 
 
 ```sql
@@ -22,17 +26,4 @@ GROUP BY personId
 HAVING count(*) = 100;
 ```
 
-
-##### ALTERNATIV
-
-```sql
-SELECT Persons.FirstName, Persons.LastName
-FROM Persons
-LEFT JOIN (
-	SELECT PersonId, COUNT(*) AS amount_of_visits
-	FROM CheckIns
-	GROUP BY PersonId
-	HAVING count(*) = 100
-) counts ON counts.PersonId = Persons.PersonId;
-```
 
