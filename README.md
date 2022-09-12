@@ -6,7 +6,7 @@
 
 - I have only included test of two of the methods in the test suite, since these two methods are public and can be called outside the class. The last method is private and can only be called within the class. The methods are also simple and each only solves one task instead of multiple. 
 
-- I have added minor exception handling. The exception is caught closes to the front, to see the stacktrace.
+- I have added minor exception handling. The exceptions are caught closes to the front, to get the stacktrace of the error. 
 
 - You can find my solution in the folder [CountingWords](https://github.com/amandajuhl95/Tasks/tree/main/CountingWords/src)
  
